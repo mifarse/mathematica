@@ -9,21 +9,24 @@ def calculate(arr):
 		try:
 			int(arr[i])
 		except:
-			if (arr[i] == "+"):
-				arr[i] = arr[i-2]+arr[i-1]
-				break
-			elif (arr[i] == "-"):
-				arr[i] = arr[i-2]-arr[i-1]
-				break
-			elif (arr[i] == "*"):
-				arr[i] = arr[i-2]*arr[i-1]
-				break
-			elif (arr[i] == "/"):
-				try:
-					arr[i] = arr[i-2]/arr[i-1]
+			try:					
+				if (arr[i] == "+"):
+					arr[i] = arr[i-2]+arr[i-1]
 					break
-				except:
-					return False
+				elif (arr[i] == "-"):
+					arr[i] = arr[i-2]-arr[i-1]
+					break
+				elif (arr[i] == "*"):
+					arr[i] = arr[i-2]*arr[i-1]
+					break
+				elif (arr[i] == "/"):
+					try:
+						arr[i] = arr[i-2]/arr[i-1]
+						break
+					except:
+						return "ошибка вычисления (дел. на 0)"
+			except:
+				return "ошибка вычисления"
 	arr.pop(i-1)
 	arr.pop(i-2)
 	if (len(arr) == 1):
